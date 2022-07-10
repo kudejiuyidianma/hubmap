@@ -1,0 +1,21 @@
+.page{
+    display: grid;
+    grid-template-columns: 65% 35%;
+}
+
+.canvas{
+    background-color: rgb(65, 66, 67);
+}
+
+.mag_table{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 5px;
+}
+
+.dir_table{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 5px;
+}
+
