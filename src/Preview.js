@@ -1,25 +1,19 @@
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls, Stage } from "@react-three/drei";
-import React, { useRef, useState, } from "react";
+import { OrbitControls} from "@react-three/drei";
 import Model from './Model'
-import Loader from './Loader';
 import Tissue from './Tissue';
-import Dragable from './Dragable';
-import Object from './Object';
 
 
 export default function Preview(props) {
   
-
-
-
   return (
     <div>
       <div id="canvas-container">
-        <Canvas style={{height:'600px', width:'800px'}} >
+        
+            <Canvas style={{height:'600px', width:'800px'}}>
           <ambientLight/>
           <pointLight position={[10,1,10]} />
-          <OrbitControls />
+          {/* <OrbitControls /> */}
             <Tissue position = {[1.5,0,0]}
             cube_x={props.cube_x}
             cube_y={props.cube_y}
