@@ -11,8 +11,17 @@ export default function Tissue(props) {
    const z = convert(props.cube_rz)
    useFrame(() => (mesh.current.rotation.x = x, mesh.current.rotation.y = y,mesh.current.rotation.z = z));
    
+   
    return (
-      <mesh {...props} ref={mesh} scale={0.03}>
+      <mesh {...props} ref={mesh} scale={0.03} 
+      onClick = {(e) => {
+         console.log(e.point)
+         props.setCube_dx(e.point.x)
+         props.setCube_dy(e.point.y)
+         props.setCube_dz(e.point.z)
+      }}
+
+      >
          <boxGeometry args={[props.cube_x, props.cube_y, props.cube_z]} />
          <meshStandardMaterial color={"orange"} />
          

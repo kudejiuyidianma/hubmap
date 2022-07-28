@@ -2,6 +2,9 @@ import React, { useRef, useState, } from "react";
 import './App.css';
 import Preview from "./Preview";
 import Profile from "./Profile"
+import * as THREE from "three"
+
+
 export default function App(props) {
   const [cube_x, setCube_x] = useState(10)
   const [cube_y, setCube_y] = useState(10)
@@ -9,9 +12,14 @@ export default function App(props) {
   const [cube_rx, setCube_rx] = useState(0)
   const [cube_ry, setCube_ry] = useState(0)
   const [cube_rz, setCube_rz] = useState(0)
-  const [cube_dx, setCube_dx] = useState(0)
+  const [cube_dx, setCube_dx] = useState(1.5)
   const [cube_dy, setCube_dy] = useState(0)
   const [cube_dz, setCube_dz] = useState(0)
+  const [top_ort, setTopOrt] = useState(200)
+  const [rig_ort, setRigOrt] = useState(200)
+  const [bot_ort, setBotOrt] = useState(150)
+  const [lef_ort, setLefOrt] = useState(-150)
+  
 
   // change page
   const [showPreview, setShowPreview] = useState(true)
@@ -47,6 +55,11 @@ export default function App(props) {
         cube_dx = {cube_dx}
         cube_dy = {cube_dy}
         cube_dz = {cube_dz}
+        showPreview = {showPreview}
+        setTopOrt = {setTopOrt}
+        setRigOrt = {setRigOrt}
+        setBotOrt = {setBotOrt}
+        setLefOrt = {setLefOrt}
         />  : 
         <div className="profile">
           <Profile 
@@ -56,9 +69,17 @@ export default function App(props) {
             cube_rx = {cube_rx}
             cube_ry = {cube_ry}
             cube_rz = {cube_rz}
+            cube_dx = {cube_dx}
+            cube_dy = {cube_dy}
+            cube_dz = {cube_dz}
             setCube_dx = {setCube_dx}
             setCube_dy = {setCube_dy}
             setCube_dz = {setCube_dz}
+            showPreview = {showPreview}
+            top_ort = {top_ort}
+            rig_ort = {rig_ort}
+            bot_ort = {bot_ort}
+            lef_ort = {lef_ort}
           />
           
         </div>
@@ -115,9 +136,9 @@ export default function App(props) {
         </div>
         <h3>Tissue Block displacement</h3>
         <div className="displacement">
-          <div>{'x = ' + cube_dx}</div>
-          <div>{'y = ' + cube_dy}</div>
-          <div>{'z = ' + cube_dz}</div>
+          <div>{'x = ' + (cube_dx+1.5).toFixed(2)}</div>
+          <div>{'y = ' + (cube_dy+4.6).toFixed(2)}</div>
+          <div>{'z = ' + (cube_dz-2).toFixed(2)}</div>
         </div>
         <h3>Tissue Block Report</h3>
 
