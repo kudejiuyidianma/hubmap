@@ -2,12 +2,18 @@ import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls} from "@react-three/drei";
 import Model from './Model'
 import Tissue from './Tissue';
+import React, { useState } from "react";
+
+import * as THREE from "three"
 
 
 export default function Preview(props) {
   
   var width = '800px'
   var height = '600px'
+
+
+  console.log(props.pos)
 
   const Scene = () => {
     useThree(({camera, scene}) => {
@@ -33,12 +39,13 @@ export default function Preview(props) {
 
   }
 
+
   return (
     <div>
       <div id="canvas-container">
         
             <Canvas style={{height:height, width:width}}
-            camera = {{fov:60, aspect:width/height, near:1, far:1000, position:[0,0,7]}}>
+            camera = {{fov:60, aspect:width/height, near:1, far:1000, position: props.pos}}>
           <ambientLight/>
           <pointLight position={[10,1,10]} />
           <Scene />

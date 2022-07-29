@@ -8,8 +8,6 @@ import Model from './Model'
 import * as THREE from "three"
 
 export default function Profile(props) {
-    const cub_pos = new THREE.Vector3(1.5,0,0)
-    const m_pos = new THREE.Vector3(-1.5,4.6,2)
     var width = '800px'
     var height = '600px'
     // // window aspect ratio
@@ -23,7 +21,7 @@ export default function Profile(props) {
         
             <Canvas style={{height:height, width:width}}
             orthographic
-            camera={{left:props.lef_ort, right: props.rig_ort, top: props.top_ort, bottom: props.bot_ort, near: 1, far: 1000, position:[0,0,7], scale:0.012}}
+            camera={{left:props.lef_ort, right: props.rig_ort, top: props.top_ort, bottom: props.bot_ort, near: 1, far: 1000, position:props.pos, scale:0.012}}
             >
           <ambientLight/>
           <pointLight position={[10,1,10]} />

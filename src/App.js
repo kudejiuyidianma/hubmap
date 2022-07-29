@@ -1,8 +1,7 @@
-import React, { useRef, useState, } from "react";
+import React, { useState } from "react";
 import './App.css';
 import Preview from "./Preview";
 import Profile from "./Profile"
-import * as THREE from "three"
 
 
 export default function App(props) {
@@ -19,7 +18,10 @@ export default function App(props) {
   const [rig_ort, setRigOrt] = useState(200)
   const [bot_ort, setBotOrt] = useState(150)
   const [lef_ort, setLefOrt] = useState(-150)
-  
+
+
+  const [pos, setPos] = useState([0,0,7])
+
 
   // change page
   const [showPreview, setShowPreview] = useState(true)
@@ -60,6 +62,7 @@ export default function App(props) {
         setRigOrt = {setRigOrt}
         setBotOrt = {setBotOrt}
         setLefOrt = {setLefOrt}
+        pos = {pos}
         />  : 
         <div className="profile">
           <Profile 
@@ -80,6 +83,7 @@ export default function App(props) {
             rig_ort = {rig_ort}
             bot_ort = {bot_ort}
             lef_ort = {lef_ort}
+            pos = {pos}
           />
           
         </div>
@@ -90,7 +94,14 @@ export default function App(props) {
       <div className='conditions'>
         <div className="btn-container">
           <span className="btn" onClick={() => setShowPreview(!showPreview)}>Profile</span>
-          {/* <span className="btn" onClick={() => setShowPreview(!showPreview)}>Preview</span> */}
+        </div>
+
+        <div className="views">
+          <span className="btn" onClick={() => {
+            setPos([0,0,7])
+          }}>Front View</span>
+          <span className="btn" onClick={() =>setPos([0,7,0])}>Top View</span>
+          <span className="btn" onClick={() => setPos([7,0,0])}>Side View</span>
         </div>
         
         <div className='magnititude'>
@@ -136,9 +147,9 @@ export default function App(props) {
         </div>
         <h3>Tissue Block displacement</h3>
         <div className="displacement">
-          <div>{'x = ' + (cube_dx+1.5).toFixed(2)}</div>
-          <div>{'y = ' + (cube_dy+4.6).toFixed(2)}</div>
-          <div>{'z = ' + (cube_dz-2).toFixed(2)}</div>
+          <div>{'x = ' + (cube_dx+0.47).toFixed(2)}</div>
+          <div>{'y = ' + (cube_dy+1.01).toFixed(2)}</div>
+          <div>{'z = ' + (0.79-cube_dz).toFixed(2)}</div>
         </div>
         <h3>Tissue Block Report</h3>
 
