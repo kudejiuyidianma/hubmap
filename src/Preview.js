@@ -4,6 +4,8 @@ import Model from './Model'
 import Tissue from './Tissue';
 import React, { useState } from "react";
 
+import { Suspense } from "react";
+
 import * as THREE from "three"
 
 
@@ -13,7 +15,6 @@ export default function Preview(props) {
   var height = '600px'
 
 
-  console.log(props.pos)
 
   const Scene = () => {
     useThree(({camera, scene}) => {
@@ -39,6 +40,9 @@ export default function Preview(props) {
 
   }
 
+ 
+
+
 
   return (
     <div>
@@ -59,9 +63,9 @@ export default function Preview(props) {
             cube_rz = {props.cube_rz}
            />
            {/* left and right ,up and down, near and far */}
-           <Model position = {[-1.5,-4.6,2]} scale = {2}/>
           
-          
+              <Model position={props.m_pos} scale = {props.scale} 
+            setLb = {props.setLb}/>
           
         </Canvas>
        </div>

@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import './App.css';
 import Preview from "./Preview";
 import Profile from "./Profile"
-
+import * as THREE from "three"
 
 export default function App(props) {
+  // manual setting
+  const scale = 40
+  const m_pos = [-4, -9, 5]
+
+
+  // auto setting
   const [cube_x, setCube_x] = useState(10)
   const [cube_y, setCube_y] = useState(10)
   const [cube_z, setCube_z] = useState(10)
@@ -21,7 +27,9 @@ export default function App(props) {
 
 
   const [pos, setPos] = useState([0,0,7])
-
+  const [lb, setLb] = useState(new THREE.Vector3(0,0,0))
+ 
+  
 
   // change page
   const [showPreview, setShowPreview] = useState(true)
@@ -63,6 +71,9 @@ export default function App(props) {
         setBotOrt = {setBotOrt}
         setLefOrt = {setLefOrt}
         pos = {pos}
+        scale = {scale}
+        m_pos = {m_pos}
+        setLb = {setLb}
         />  : 
         <div className="profile">
           <Profile 
@@ -84,6 +95,9 @@ export default function App(props) {
             bot_ort = {bot_ort}
             lef_ort = {lef_ort}
             pos = {pos}
+            scale = {scale}
+            m_pos = {m_pos}
+            setLb = {setLb}
           />
           
         </div>
@@ -147,9 +161,9 @@ export default function App(props) {
         </div>
         <h3>Tissue Block displacement</h3>
         <div className="displacement">
-          <div>{'x = ' + (cube_dx+0.47).toFixed(2)}</div>
-          <div>{'y = ' + (cube_dy+1.01).toFixed(2)}</div>
-          <div>{'z = ' + (0.79-cube_dz).toFixed(2)}</div>
+          <div>{'x = ' + (cube_dx-lb.x).toFixed(2)}</div>
+          <div>{'y = ' + (cube_dy-lb.y).toFixed(2)}</div>
+          <div>{'z = ' + (cube_dz-lb.z).toFixed(2)}</div>
         </div>
         <h3>Tissue Block Report</h3>
 

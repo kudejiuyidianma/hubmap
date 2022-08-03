@@ -6,6 +6,10 @@ import Tissue from './Tissue';
 import Dragable from './Dragable'
 import Model from './Model'
 import * as THREE from "three"
+import { useLoader } from '@react-three/fiber'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { Suspense } from "react";
+
 
 export default function Profile(props) {
     var width = '800px'
@@ -14,6 +18,8 @@ export default function Profile(props) {
     // var k = width/height
     // //3D scene display range control coefficient, the larger the coefficient, the larger the display range.
     // var s = 150
+
+
   
     return(
   <div>
@@ -40,13 +46,13 @@ export default function Profile(props) {
            />
            </Dragable>
            {/* left and right ,up and down, near and far */}
-           <Model position = {[-1.5,-4.6,2]} scale = {2}/>
-          
-          
+           <Model position={props.m_pos} scale = {props.scale} setLb = {props.setLb}/>
         </Canvas>
        </div>
       
     </div>
     )
 }
+
+
 

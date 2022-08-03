@@ -15,7 +15,6 @@ export default function Tissue(props) {
    return (
       <mesh {...props} ref={mesh} scale={0.03} 
       onClick = {(e) => {
-         console.log(e.point)
          props.setCube_dx(e.point.x)
          props.setCube_dy(e.point.y)
          props.setCube_dz(e.point.z)
